@@ -33,10 +33,9 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        #REMOTE_PORT: 22/80 both need to be configured on the server
         ARGS: "-avzL --delete  --verbose"
         SOURCE: "dist/"
-        TARGET: "/server/www/firebase-demo"
+        TARGET: "/server/www/expsocialmedia-demo"
         SCRIPT_BEFORE: |
-          mkdir -p /server/www/firebase-demo
-          chmod 755 /server/www/firebase-demo
+          mkdir -p /server/www/expsocialmedia-demo
+          chmod 755 /server/www/expsocialmedia-demo
