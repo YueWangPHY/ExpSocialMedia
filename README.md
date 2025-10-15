@@ -7,7 +7,7 @@ A modern social media website built with Vue 3, Firebase Authentication, and Fir
 - 🔐 **User Authentication**: Sign up, sign in, and sign out using Firebase Auth
 - 📝 **Message Management**: Create, edit, and delete messages (only for authenticated users)
 - 👀 **Public Browsing**: Anyone can view all messages without authentication
-- ❤️ **Like System**: Like and unlike messages with real-time updates
+- ❤️ **Like System**: Like and unlike messages with real-time updates (TO be fixed)
 - 💬 **Comments**: Add comments to messages with real-time updates
 - 📱 **Responsive Design**: Beautiful, mobile-friendly interface with Tailwind CSS
 - ⚡ **Real-time Updates**: All changes sync instantly across all users
