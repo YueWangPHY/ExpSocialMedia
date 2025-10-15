@@ -35,7 +35,7 @@ jobs:
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         ARGS: "-avzL --delete  --verbose"
         SOURCE: "dist/"
-        TARGET: "/home/${{ secrets.REMOTE_HOST }}/server/www/expsocialmedia-demo"
+        TARGET: "/home/github/server/www/expsocialmedia-demo"
         SCRIPT_BEFORE: |
-          mkdir -p /home/${{ secrets.REMOTE_HOST }}/server/www/expsocialmedia-demo
-          chmod 755 /home/${{ secrets.REMOTE_HOST }}/server/www/expsocialmedia-demo
+          mkdir -p /home/github/server/www/expsocialmedia-demo
+          chmod 755 /home/github/server/www/expsocialmedia-demo
