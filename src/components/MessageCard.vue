@@ -67,7 +67,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { collection, onSnapshot, query } from 'firebase/firestore'
+import { db } from '../firebase.js'
 import { useAuth } from '../composables/useAuth'
 import { useMessages } from '../composables/useMessages'
 import CommentSection from './CommentSection.vue'
@@ -86,6 +88,7 @@ const { toggleLike } = useMessages()
 
 const showComments = ref(false)
 const commentCount = ref(0)
+let unsubscribeCommentCount = null
 
 const isAuthor = computed(() => {
   return currentUser.value && currentUser.value.uid === props.message.authorId
@@ -141,4 +144,21 @@ const toggleComments = () => {
 const updateCommentCount = (count) => {
   commentCount.value = count
 }
+
+// Set up real-time listener for comment count
+onMounted(() => {
+  const q = query(collection(db, 'messages', props.message.id, 'comments'))
+  
+  unsubscribeCommentCount = onSnapshot(q, (snapshot) => {
+    commentCount.value = snapshot.docs.length
+  }, (error) => {
+    console.error('Error listening to comment count:', error)
+  })
+})
+
+onUnmounted(() => {
+  if (unsubscribeCommentCount) {
+    unsubscribeCommentCount()
+  }
+})
 </script>
